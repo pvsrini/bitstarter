@@ -3,10 +3,10 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  buf = new buffer(256);
   fs.readFile('index.html', function (err, data) {
     if (err) throw err;
-    buf.write(data);
+    buf = new buffer(256);
+    buf.write(data, "utf-8");
   });
 
   response.send(buf.toString('utf8'));
